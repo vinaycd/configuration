@@ -13,6 +13,14 @@
 
 set -xe
 
+if [[ -z "${ANSIBLE_REPO}" ]]; then
+  ANSIBLE_REPO="https://github.com/edx/ansible.git"
+fi
+
+if [[ -z "${ANSIBLE_VERSION}" ]]; then
+  ANSIBLE_VERSION="master"
+fi
+
 if [[ -z "${CONFIGURATION_REPO}" ]]; then
   CONFIGURATION_REPO="https://github.com/edx/configuration.git"
 fi
@@ -47,6 +55,8 @@ cat << EOF
 
 Running the edx_ansible bootstrap script with the following arguments:
 
+ANSIBLE_REPO="${ANSIBLE_REPO}"	
+ANSIBLE_VERSION="${ANSIBLE_VERSION}"
 CONFIGURATION_REPO="${CONFIGURATION_REPO}"
 CONFIGURATION_VERSION="${CONFIGURATION_VERSION}"
 
